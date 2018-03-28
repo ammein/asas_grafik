@@ -81,10 +81,11 @@ int main(int argc, char** argv)
 	glutInitWindowSize(windowWidth, windowHeight);
 	glutCreateWindow("Tutorial 1 (Points)");
 
-	readExfile("externalfile.txt");
 	initialize();
 	glutDisplayFunc(displayFunc);
 	glutReshapeFunc(reshapeFunc);
-	glutMouseFunc(mousePlotPoint);
 	glutMainLoop();
+	glutMouseFunc(mousePlotPoint);
+	readExfile("externalfile.txt");
+	system("pause");
 }
