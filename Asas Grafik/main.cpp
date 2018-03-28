@@ -53,7 +53,7 @@ void reshapeFunc(GLint newWidth, GLint newHeight)
 }
 
 // Read external file function
-void readExfile(char *filename)
+void readExfile(const char *filename)
 {
 	int row = 0;
 	int col = 0;
