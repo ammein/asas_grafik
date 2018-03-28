@@ -9,7 +9,7 @@ using namespace std;
 GLsizei windowWidth = 800, windowHeight = 640;
 void initialize(void)
 {
-	glClearColor(0.0, 000, 1.0, 1.0);
+	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, 200.0, 0.0, 150.0);
 }
@@ -20,6 +20,7 @@ void plotPoint(GLint x, GLint y) {
 	glEnd();
 }
 
+// Centering pressing to the plot points
 void mousePlotPoint(GLint button, GLint action, GLint xMouse, GLint yMouse) {
 	if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN)
 		plotPoint(xMouse, windowHeight - yMouse);
@@ -48,8 +49,8 @@ void reshapeFunc(GLint newWidth, GLint newHeight)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0.0, GLdouble(newWidth), 0.0, GLdouble(newHeight));
-	windowWidth = newWidth;
-	windowHeight = newHeight;
+	windowWidth = newWidth; // Location of mouse pressing on width
+	windowHeight = newHeight; // Location of mouse pressing on height
 }
 
 // Read external file function
@@ -87,5 +88,4 @@ int main(int argc, char** argv)
 	glutMainLoop();
 	glutMouseFunc(mousePlotPoint);
 	readExfile("externalfile.txt");
-	system("pause");
 }
