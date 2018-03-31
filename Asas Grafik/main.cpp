@@ -15,12 +15,13 @@ void initialize(void)
 }
 
 void plotPoint(GLint x, GLint y) {
-	glLineWidth(2.5); // For Line
-	glBegin(GL_LINES);
-	//glBegin(GL_POINTS);
+	//glLineWidth(2.5); // For Line
+	//glBegin(GL_LINES);
+	glPointSize(5.0); // Size of the point
+	glBegin(GL_POINTS);
 	glVertex2d(x, y);
 	//glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(15, 0, 0);
+	//glVertex3f(15, 0, 0);
 	glEnd();
 }
 
@@ -34,7 +35,7 @@ void mousePlotPoint(GLint button, GLint action, GLint xMouse, GLint yMouse) {
 // Display function
 void displayFunc(void)
 {
-	glColor3f(1.0, 1.0, 1.0);
+	glColor3f(1.0, 1.0, 0.0);
 	glBegin(GL_POINTS);
 	for (int colum = 0; colum < 2; colum++)
 	{
