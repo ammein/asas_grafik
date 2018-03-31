@@ -9,18 +9,22 @@ using namespace std;
 GLsizei windowWidth = 800, windowHeight = 640;
 void initialize(void)
 {
-	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, 200.0, 0.0, 150.0);
 }
 
 void plotPoint(GLint x, GLint y) {
-	glBegin(GL_POINTS);
+	glLineWidth(2.5); // For Line
+	glBegin(GL_LINES);
+	//glBegin(GL_POINTS);
 	glVertex2d(x, y);
+	//glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(15, 0, 0);
 	glEnd();
 }
 
-// Centering pressing to the plot points
+// Centering pressing to the plot points (Calculate from the origin [bottom left])
 void mousePlotPoint(GLint button, GLint action, GLint xMouse, GLint yMouse) {
 	if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN)
 		plotPoint(xMouse, windowHeight - yMouse);
@@ -30,7 +34,7 @@ void mousePlotPoint(GLint button, GLint action, GLint xMouse, GLint yMouse) {
 // Display function
 void displayFunc(void)
 {
-	glColor3f(1.0, 1.0, 0.0);
+	glColor3f(1.0, 1.0, 1.0);
 	glBegin(GL_POINTS);
 	for (int colum = 0; colum < 2; colum++)
 	{
