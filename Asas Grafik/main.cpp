@@ -9,7 +9,7 @@ using namespace std;
 GLsizei windowWidth = 800, windowHeight = 640;
 void initialize(void)
 {
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glClearColor(0.133, 0.117, 0.282, 1.0);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0, 200.0, 0.0, 150.0);
 }
@@ -17,25 +17,39 @@ void initialize(void)
 void plotPoint(GLint x, GLint y) {
 	//glLineWidth(2.5); // For Line
 	//glBegin(GL_LINES);
-	glPointSize(5.0); // Size of the point
+	glPointSize(25.0); // Size of the point
 	glBegin(GL_POINTS);
 	glVertex2d(x, y);
-	//glVertex3f(0.0, 0.0, 0.0);
-	//glVertex3f(15, 0, 0);
+
+	// glPoints Increment My Custom Codes
+	/*for (int i = 0; i < windowHeight; i++)
+	{
+		glVertex2d(i, i);
+	}*/
+
+	/*glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(15, 0, 0);*/
 	glEnd();
 }
 
-// Centering pressing to the plot points (Calculate from the origin [bottom left])
+// Centering pressing to the plot points (Calculate from the origin [bottom left] , Mouse kira dari kiri atas. OpenGL dari kiri bawah)
 void mousePlotPoint(GLint button, GLint action, GLint xMouse, GLint yMouse) {
 	if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN)
 		plotPoint(xMouse, windowHeight - yMouse);
 	glFlush();
 }
 
+// Custom Centering Points
+//void mousePlotPoint(GLint button, GLint action, GLint xMouse, GLint yMouse) {
+//	if(button && action)
+//		plotPoint(xMouse, (windowHeight / 2) - yMouse);
+//	glFlush();
+//}
+
 // Display function
 void displayFunc(void)
 {
-	glColor3f(1.0, 1.0, 0.0);
+	glColor3f(0.960, 0.960, 0.960);
 	glBegin(GL_POINTS);
 	for (int colum = 0; colum < 2; colum++)
 	{
@@ -94,3 +108,4 @@ int main(int argc, char** argv)
 	glutMouseFunc(mousePlotPoint);
 	readExfile("externalfile.txt");
 }
+
